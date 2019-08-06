@@ -5,17 +5,19 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import android.content.Intent;
 import java.util.Map;
 import java.util.HashMap;
 import android.util.Log;
 
-public class ShutdownModule extends ReactContextBaseJavaModule  {
+public class BroadcastReceiverRNModule extends ReactContextBaseJavaModule  {
     private static ReactApplicationContext reactContext;
     private static final String TAG = "JAVA_MODULE";
 
-    public ShutdownModule (ReactApplicationContext reactContext) {
+    public BroadcastReceiverRNModule (ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
     }
@@ -23,8 +25,8 @@ public class ShutdownModule extends ReactContextBaseJavaModule  {
     public static void sendEvent(String eventName, Intent intent) {
 
         WritableMap params = Arguments.createMap();
-        params.put("action", intent.getAction());
-        params.put("teste", "teste");
+        params.putString("action", intent.getAction());
+        params.putString("teste", "teste");
         
         Log.d(TAG, intent.getAction());
 
@@ -35,6 +37,6 @@ public class ShutdownModule extends ReactContextBaseJavaModule  {
 
     @Override
     public String getName() {
-        return "ShutdownModule";
+        return "BroadcastReceiverRNModule";
     }
 }

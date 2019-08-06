@@ -3,12 +3,12 @@ package com.testebroadcast;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.testebroadcast.ShutdownModule;
+import com.testebroadcast.BroadcastReceiverRNModule;
 import java.util.Map;
 import java.util.HashMap;
 import android.util.Log;
 
-public class ShutdownReceiver extends BroadcastReceiver {
+public class BroadcastRNReceiver extends BroadcastReceiver {
 
     private static final String TAG = "JAVA_RECEIVER";
 
@@ -20,6 +20,6 @@ public class ShutdownReceiver extends BroadcastReceiver {
        // String content = params.toString();
         
         Log.d(TAG, intent.getAction());        
-        ShutdownModule.sendEvent("broadcastNative", intent);
+        BroadcastReceiverRNModule.sendEvent("broadcastNative", intent);
     }
 }
