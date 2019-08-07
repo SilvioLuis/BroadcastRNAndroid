@@ -10,16 +10,11 @@ import android.util.Log;
 
 public class BroadcastRNReceiver extends BroadcastReceiver {
 
-    private static final String TAG = "JAVA_RECEIVER";
+    private static final String TAG = "BROADCAST_RECEIVER";
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        //HashMap<String, String> params = new HashMap<>();
-        //params.put("action", intent.getAction());
-        //params.put("teste", "teste");
-       // String content = params.toString();
-        
-        Log.d(TAG, intent.getAction());        
+        Log.d(TAG, intent.getAction());  
         BroadcastReceiverRNModule.sendEvent("broadcastNative", intent);
     }
 }

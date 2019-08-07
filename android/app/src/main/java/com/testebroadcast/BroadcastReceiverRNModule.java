@@ -15,7 +15,7 @@ import android.util.Log;
 
 public class BroadcastReceiverRNModule extends ReactContextBaseJavaModule  {
     private static ReactApplicationContext reactContext;
-    private static final String TAG = "JAVA_MODULE";
+    private static final String TAG = "BROADCAST_MODULE";
 
     public BroadcastReceiverRNModule (ReactApplicationContext reactContext) {
         super(reactContext);
@@ -24,12 +24,11 @@ public class BroadcastReceiverRNModule extends ReactContextBaseJavaModule  {
 
     public static void sendEvent(String eventName, Intent intent) {
 
+        Log.d(TAG, intent.getAction());
+        
         WritableMap params = Arguments.createMap();
         params.putString("action", intent.getAction());
-        params.putString("teste", "teste");
-        
-        Log.d(TAG, intent.getAction());
-
+    
         reactContext
             .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
             .emit(eventName, params);
